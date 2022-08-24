@@ -1,0 +1,188 @@
+body {
+    display: flex;    
+    flex-direction: column;
+    background-image: url('assets/home.png');   
+    overflow:  hidden;
+}
+
+html, .wrapper, .anciens, .anciens-items, button, .level, .demo, .shuffle, .main, .deck{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+}
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    overflow-x:hidden;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.wrapper {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.anciens {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.azathoth:hover, .cthulthu:hover, .iogSothoth:hover, .shubNiggurath:hover {
+    width: 205px;
+    box-shadow: 10px 10px 10px black;
+    transition: 500ms;
+}
+
+.anciens-active {
+    width: 205px;
+    box-shadow: 10px 10px 10px rgb(201, 32, 116);
+    transition: 200ms;
+}
+
+.anciens-items {
+    width: 215px;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    width: 200px;
+    height: 45px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.button-active {
+    width: 200px;
+    height: 45px;
+    border: 1px solid rgba(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+button:hover {
+    width: 205px;    
+    box-shadow: 5px 5px 10px black;
+    transition: 500ms;
+}
+
+.demo {
+    margin-top: 40px;
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;    
+    transition: opacity 900ms linear, visibility 1s linear;
+}
+
+.hiddenshow {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 900ms linear, visibility 1s linear;
+}
+
+.level, .demo {
+    width: 215px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.shuffle {
+    background-color: rgb(201, 32, 116);
+}
+
+.main {
+    display: flex;
+    padding: 20px 0;
+    margin: 20px 0;
+    justify-content: space-between;
+}
+
+.deck {
+    background-image: url('assets/mythicCardBackground.png');    
+    height: 295px;
+    width: 180px;
+    margin-right: 30px;
+}
+
+.first-of-deck {
+    height: 295px;
+    width: 180px;
+    /*border: 1px solid rgba(255, 255, 255, 0.2);*/
+    margin-right: 30px;
+}
+
+.second-of-deck {
+    height: 295px;
+    width: 180px;
+    /*border: 1px solid rgba(255, 255, 255, 0.2);*/
+}
+
+.card-count {
+    height: 295px;
+    width: 200px;
+    margin-right: 10px;
+}
+
+.decks {
+    display: flex;
+}
+
+.green, .brown, .blue {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.green {
+    background-color: rgb(10, 107, 15);
+}
+
+.brown {
+    background-color: rgb(189, 92, 12);
+}
+
+.blue {
+    background-color: rgb(16, 143, 202);
+}
+
+.circles {
+    display: flex;
+    justify-content: space-around;
+}
+
+.card-count {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.stage-text {
+    color: white;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-align: center;
+}
