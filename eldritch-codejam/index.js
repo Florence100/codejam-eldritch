@@ -9,23 +9,14 @@ const shubNiggurathCard = document.querySelector('.shubNiggurath');
 const levelButton = document.querySelector('.level');
 const middleButton = document.querySelector('.middle');
 const lightButton = document.querySelector('.light');
+const veryLightButton = document.querySelector('.very-light');
+const hardButton = document.querySelector('.hard');
+const veryHardButton = document.querySelector('.very-hard');
 const demoButton = document.querySelector('.demo');
 const cardCount = document.querySelector('.card-count');
 const deck = document.querySelector('.first-of-deck');
 const deckOpen = document.querySelector('.second-of-deck');
 
-
-// let greenCards = ['green1.png', 'green2.png', 'green3.png', 'green4.png', 'green5.png', 'green6.png', 'green7.png', 
-//                     'green8.png', 'green9.png', 'green10.png', 'green11.png', 'green12.png', 'green13.png', 'green14.png', 
-//                     'green15.png', 'green16.png', 'green17.png', 'green18.png']
-
-
-// let brownCards = ['brown1.png', 'brown2.png', 'brown3.png', 'brown4.png', 'brown5.png', 'brown6.png', 'brown7.png',
-//                     'brown8.png', 'brown9.png', 'brown10.png', 'brown11.png', 'brown12.png', 'brown13.png', 'brown14.png',
-//                     'brown15.png', 'brown16.png', 'brown17.png', 'brown18.png', 'brown19.png', 'brown20.png', 'brown21.png']
-
-// let blueCards = ['blue1.png', 'blue2.png', 'blue3.png', 'blue4.png', 'blue5.png', 'blue6.png', 'blue7.png', 'blue8.png', 
-//                     'blue9.png', 'blue10.png', 'blue11.png', 'blue12.png']
 
 let greenCards;
 let brownCards;
@@ -89,11 +80,36 @@ shubNiggurathCard.addEventListener('click', () => {
     anciens = 'shubNiggurath';
 })
 
+veryHardButton.addEventListener('click', () => {
+    demoButton.classList.remove('hidden');
+    demoButton.classList.add('hiddenshow');
+    veryHardButton.classList.add('button-active');
+    hardButton.classList.remove('button-active');
+    middleButton.classList.remove('button-active');
+    lightButton.classList.remove('button-active');
+    veryLightButton.classList.remove('button-active');
+    level = 'very-hard';
+})
+
+hardButton.addEventListener('click', () => {
+    demoButton.classList.remove('hidden');
+    demoButton.classList.add('hiddenshow');
+    hardButton.classList.add('button-active');
+    middleButton.classList.remove('button-active');
+    lightButton.classList.remove('button-active');
+    veryLightButton.classList.remove('button-active');
+    veryHardButton.classList.remove('button-active');
+    level = 'hard';
+})
+
 middleButton.addEventListener('click', () => {
     demoButton.classList.remove('hidden');
     demoButton.classList.add('hiddenshow');
     middleButton.classList.add('button-active');
     lightButton.classList.remove('button-active');
+    hardButton.classList.remove('button-active');
+    veryLightButton.classList.remove('button-active');
+    veryHardButton.classList.remove('button-active');
     level = 'middle';
 })
 
@@ -102,7 +118,21 @@ lightButton.addEventListener('click', () => {
     demoButton.classList.add('hiddenshow');
     lightButton.classList.add('button-active');
     middleButton.classList.remove('button-active');
+    hardButton.classList.remove('button-active');
+    veryLightButton.classList.remove('button-active');
+    veryHardButton.classList.remove('button-active');
     level = 'light';
+})
+
+veryLightButton.addEventListener('click', () => {
+    demoButton.classList.remove('hidden');
+    demoButton.classList.add('hiddenshow');
+    veryLightButton.classList.add('button-active');
+    lightButton.classList.remove('button-active');
+    middleButton.classList.remove('button-active');
+    hardButton.classList.remove('button-active');
+    veryHardButton.classList.remove('button-active');
+    level = 'very-light';
 })
 
 demoButton.addEventListener('click', () => {
@@ -111,7 +141,6 @@ demoButton.addEventListener('click', () => {
     deck.classList.remove('first-of-deck');
     deck.classList.add('deck');
     deckOpen.style.backgroundImage = 'none';
-    console.log(level);
     if (level === 'middle') {
         greenCards = []
         brownCards = []
@@ -151,6 +180,72 @@ demoButton.addEventListener('click', () => {
                 blueCards.push(i.cardFace)
             }
         }
+    } else if (level === 'hard') {      
+        greenCards = []
+        brownCards = []
+        blueCards = []
+
+        for (let i of greenDeck) {
+            if (i.difficulty !== 'easy') {
+                greenCards.push(i.cardFace)
+            }
+        }
+        
+        for (let i of brownDeck) {
+            if (i.difficulty !== 'easy') {
+                brownCards.push(i.cardFace)
+            }
+        }
+        
+        for (let i of blueDeck) {
+            if (i.difficulty !== 'easy') {
+                blueCards.push(i.cardFace)
+            }
+        }
+    } else if (level === 'very-light') {      
+        greenCards = []
+        brownCards = []
+        blueCards = []
+
+        for (let i of greenDeck) {
+            if (i.difficulty === 'easy') {
+                greenCards.push(i.cardFace)
+            }
+        }
+        
+        for (let i of brownDeck) {
+            if (i.difficulty === 'easy') {
+                brownCards.push(i.cardFace)
+            }
+        }
+        
+        for (let i of blueDeck) {
+            if (i.difficulty === 'easy') {
+                blueCards.push(i.cardFace)
+            }
+        }
+    } else if (level === 'very-hard') {      
+        greenCards = []
+        brownCards = []
+        blueCards = []
+
+        for (let i of greenDeck) {
+            if (i.difficulty === 'hard') {
+                greenCards.push(i.cardFace)
+            }
+        }
+        
+        for (let i of brownDeck) {
+            if (i.difficulty === 'hard') {
+                brownCards.push(i.cardFace)
+            }
+        }
+        
+        for (let i of blueDeck) {
+            if (i.difficulty === 'hard') {
+                blueCards.push(i.cardFace)
+            }
+        }
     }
 
     if (anciens === 'azathoth') {
@@ -163,6 +258,8 @@ demoButton.addEventListener('click', () => {
         shubNiggurath ();
         }
 })
+    
+
 
 //max не входит!
 function getRandomNum(min, max) {
@@ -226,26 +323,86 @@ function cardSelection () {
     const cardBrownCount = composition.first.brown + composition.second.brown + composition.third.brown;
     const cardBlueCount = composition.first.blue + composition.second.blue + composition.third.blue;
     
-    while (cardGreen.length < cardGreenCount) {
-        let ranNum = getRandomNum(0, greenCards.length)
-        if (!cardGreen.includes(greenCards[ranNum])) {
-            cardGreen.push(greenCards[ranNum]);
-        }                
+    if (greenCards.length >= cardGreenCount){
+        while (cardGreen.length < cardGreenCount) {
+            let ranNum = getRandomNum(0, greenCards.length)
+            if (!cardGreen.includes(greenCards[ranNum])) {
+                cardGreen.push(greenCards[ranNum]);
+            }                
+        }
+    } else {
+        let greenCardsNormal = []
+        for (let i of greenDeck) {
+            if (i.difficulty === 'normal') {
+                greenCardsNormal.push(i.cardFace)
+            }
+        }
+        
+        cardGreen = greenCards;
+        let difference = cardGreenCount - cardGreen.length;
+        
+        while (difference !== 0) {
+            let ranNum = getRandomNum(0, greenCardsNormal.length)
+            if (!cardGreen.includes(greenCardsNormal[ranNum])) {
+                cardGreen.push(greenCardsNormal[ranNum]);
+            }
+            difference = cardGreenCount - cardGreen.length;
+        }
+    }
+    
+    if (brownCards.length >= cardBrownCount){
+        while (cardBrown.length < cardBrownCount) {
+            let ranNum = getRandomNum(0, brownCards.length)
+            if (!cardBrown.includes(brownCards[ranNum])) {
+                cardBrown.push(brownCards[ranNum]);
+            }
+        }
+    } else {
+        let brownCardsNormal = []
+        for (let i of brownDeck) {
+            if (i.difficulty === 'normal') {
+                brownCardsNormal.push(i.cardFace)
+            }
+        }
+        
+        cardBrown = brownCards;
+        let difference = cardBrownCount - cardBrown.length;
+        
+        while (difference !== 0) {
+            let ranNum = getRandomNum(0, brownCardsNormal.length)
+            if (!cardBrown.includes(brownCardsNormal[ranNum])) {
+                cardBrown.push(brownCardsNormal[ranNum]);
+            }
+            difference = cardBrownCount - cardBrown.length;
+        }
     }
 
-    while (cardBrown.length < cardBrownCount) {
-        let ranNum = getRandomNum(0, brownCards.length)
-        if (!cardBrown.includes(brownCards[ranNum])) {
-            cardBrown.push(brownCards[ranNum]);
-        }                
+    if (blueCards.length >= cardBlueCount){
+        while (cardBlue.length < cardBlueCount) {
+            let ranNum = getRandomNum(0, blueCards.length)
+            if (!cardBlue.includes(blueCards[ranNum])) {
+                cardBlue.push(blueCards[ranNum]);
+            }            
     }
-
-    while (cardBlue.length < cardBlueCount) {
-        let ranNum = getRandomNum(0, blueCards.length)
-        if (!cardBlue.includes(blueCards[ranNum])) {
-            cardBlue.push(blueCards[ranNum]);
-        }                
-    }
+    } else {
+        let blueCardsNormal = []
+        for (let i of blueDeck) {
+            if (i.difficulty === 'normal') {
+                blueCardsNormal.push(i.cardFace)
+            }
+        }
+        
+        cardBlue = blueCards;
+        let difference = cardBlueCount - cardBlue.length;
+        
+        while (difference !== 0) {
+            let ranNum = getRandomNum(0, blueCardsNormal.length)
+            if (!cardBlue.includes(blueCardsNormal[ranNum])) {
+                cardBlue.push(blueCardsNormal[ranNum]);
+            }
+            difference = cardBlueCount - cardBlue.length;
+        }
+    }    
 
     firstStageCard = []
     secondStageCard = []
