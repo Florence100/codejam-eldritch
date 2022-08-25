@@ -184,3 +184,8 @@ button:hover {
     margin-bottom: 15px;
     text-align: center;
 }
+
+.text-active {
+    color: rgb(201, 32, 116);
+    font-weight: 900;
+}

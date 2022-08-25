@@ -16,6 +16,9 @@ const demoButton = document.querySelector('.demo');
 const cardCount = document.querySelector('.card-count');
 const deck = document.querySelector('.first-of-deck');
 const deckOpen = document.querySelector('.second-of-deck');
+const firstStage = document.querySelector('.first-stage .stage-text');
+const secondStage = document.querySelector('.second-stage .stage-text');
+const thirdStage = document.querySelector('.third-stage .stage-text');
 
 
 let greenCards;
@@ -136,6 +139,9 @@ veryLightButton.addEventListener('click', () => {
 })
 
 demoButton.addEventListener('click', () => {
+    firstStage.classList.remove('text-active');
+    secondStage.classList.remove('text-active');
+    thirdStage.classList.remove('text-active');
     cardCount.classList.remove('hidden');
     cardCount.classList.add('hiddenshow');
     deck.classList.remove('first-of-deck');
@@ -466,12 +472,13 @@ function cardSelection () {
 function clickCard () {
     deck.addEventListener('click', () => {
         if (firstStageCard.length > 0) {
+            firstStage.classList.add('text-active');
             let url
             let ranNum = getRandomNum(0, firstStageCard.length);
             if (firstStageCard[ranNum].includes('green')) {
                 url = `'assets/MythicCards/green/${firstStageCard[ranNum]}'`
                 composition.first.green = composition.first.green - 1
-                firstStageGreen.textContent = composition.first.green
+                firstStageGreen.textContent = composition.first.green               
             } else if (firstStageCard[ranNum].includes('brown')) {
                 url = `'assets/MythicCards/brown/${firstStageCard[ranNum]}'`
                 composition.first.brown = composition.first.brown - 1
@@ -485,48 +492,53 @@ function clickCard () {
             deckOpen.style.backgroundSize = "180px 295px";
             firstStageCard.splice(ranNum, 1);
         } else if (secondStageCard.length > 0) {
-                let url
-                let ranNum = getRandomNum(0, secondStageCard.length);
-                if (secondStageCard[ranNum].includes('green')) {
-                    url = `'assets/MythicCards/green/${secondStageCard[ranNum]}'`
-                    composition.second.green = composition.second.green - 1
-                    secondStageGreen.textContent = composition.second.green
-                } else if (secondStageCard[ranNum].includes('brown')) {
-                    url = `'assets/MythicCards/brown/${secondStageCard[ranNum]}'`
-                    composition.second.brown = composition.second.brown - 1
-                    secondStageBrown.textContent = composition.second.brown
-                } else if (secondStageCard[ranNum].includes('blue')) {
-                    url = `'assets/MythicCards/blue/${secondStageCard[ranNum]}'`
-                    composition.second.blue = composition.second.blue - 1
-                    secondStageBlue.textContent = composition.second.blue
-                }
-                deckOpen.style.backgroundImage = `url(${url})`;
-                deckOpen.style.backgroundSize = "180px 295px";
-                secondStageCard.splice(ranNum, 1);
-            } else if (thirdStageCard.length > 0) {
-                    if (thirdStageCard.length === 1) {
-                        deck.classList.add('first-of-deck');
-                        deck.classList.remove('deck');
-                    }
-                    let url
-                    let ranNum = getRandomNum(0, thirdStageCard.length);
-                    if (thirdStageCard[ranNum].includes('green')) {
-                        url = `'assets/MythicCards/green/${thirdStageCard[ranNum]}'`
-                        composition.third.green = composition.third.green - 1
-                        thirdStageGreen.textContent = composition.third.green
-                    } else if (thirdStageCard[ranNum].includes('brown')) {
-                        url = `'assets/MythicCards/brown/${thirdStageCard[ranNum]}'`
-                        composition.third.brown = composition.third.brown - 1
-                        thirdStageBrown.textContent = composition.third.brown
-                    } else if (thirdStageCard[ranNum].includes('blue')) {
-                        url = `'assets/MythicCards/blue/${thirdStageCard[ranNum]}'`
-                        composition.third.blue = composition.third.blue - 1
-                        thirdStageBlue.textContent = composition.third.blue
-                    }
-                    deckOpen.style.backgroundImage = `url(${url})`;
-                    deckOpen.style.backgroundSize = "180px 295px";
-                    thirdStageCard.splice(ranNum, 1);
-                }
+            firstStage.classList.remove('text-active');
+            secondStage.classList.add('text-active');
+            let url
+            let ranNum = getRandomNum(0, secondStageCard.length);
+            if (secondStageCard[ranNum].includes('green')) {
+                url = `'assets/MythicCards/green/${secondStageCard[ranNum]}'`
+                composition.second.green = composition.second.green - 1
+                secondStageGreen.textContent = composition.second.green
+            } else if (secondStageCard[ranNum].includes('brown')) {
+                url = `'assets/MythicCards/brown/${secondStageCard[ranNum]}'`
+                composition.second.brown = composition.second.brown - 1
+                secondStageBrown.textContent = composition.second.brown
+            } else if (secondStageCard[ranNum].includes('blue')) {
+                url = `'assets/MythicCards/blue/${secondStageCard[ranNum]}'`
+                composition.second.blue = composition.second.blue - 1
+                secondStageBlue.textContent = composition.second.blue
+            }
+            deckOpen.style.backgroundImage = `url(${url})`;
+            deckOpen.style.backgroundSize = "180px 295px";
+            secondStageCard.splice(ranNum, 1);
+        } else if (thirdStageCard.length > 0) {
+            secondStage.classList.remove('text-active');
+            thirdStage.classList.add('text-active');
+            if (thirdStageCard.length === 1) {
+                deck.classList.add('first-of-deck');
+                deck.classList.remove('deck');
+                thirdStage.classList.remove('text-active');
+            }
+            let url
+            let ranNum = getRandomNum(0, thirdStageCard.length);
+            if (thirdStageCard[ranNum].includes('green')) {
+                url = `'assets/MythicCards/green/${thirdStageCard[ranNum]}'`
+                composition.third.green = composition.third.green - 1
+                thirdStageGreen.textContent = composition.third.green
+            } else if (thirdStageCard[ranNum].includes('brown')) {
+                url = `'assets/MythicCards/brown/${thirdStageCard[ranNum]}'`
+                composition.third.brown = composition.third.brown - 1
+                thirdStageBrown.textContent = composition.third.brown
+            } else if (thirdStageCard[ranNum].includes('blue')) {
+                url = `'assets/MythicCards/blue/${thirdStageCard[ranNum]}'`
+                composition.third.blue = composition.third.blue - 1
+                thirdStageBlue.textContent = composition.third.blue
+            }
+            deckOpen.style.backgroundImage = `url(${url})`;
+            deckOpen.style.backgroundSize = "180px 295px";
+            thirdStageCard.splice(ranNum, 1);
+        }
     })
 }
 
